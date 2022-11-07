@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
     const {
@@ -27,7 +28,11 @@ const ServiceCard = ({ service }) => {
                         Approximate cost will be BDT:{" "}
                         <span className="font-bold">{ServiceCost}</span>
                     </p>
-                    <button className="btn btn-primary">Service Review</button>
+                    <Link to={`/serviceDetails/${_id}`}>
+                        <button className="btn btn-primary">
+                            Service Review
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

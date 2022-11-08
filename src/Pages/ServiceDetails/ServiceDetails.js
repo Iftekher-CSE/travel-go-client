@@ -12,7 +12,7 @@ const ServiceDetails = () => {
                 <CardDetails serviceDetails={serviceDetails}></CardDetails>
             </div>
             <div className="w=1/2">
-                <ReviewSection></ReviewSection>
+                <ReviewSection serviceDetails={serviceDetails}></ReviewSection>
             </div>
         </div>
     );

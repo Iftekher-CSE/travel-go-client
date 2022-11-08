@@ -3,11 +3,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main/Main";
 import AddService from "../../Pages/AddService/AddService";
 import AllServices from "../../Pages/AllServices/AllServices";
+import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
 import Register from "../../Pages/Register/Register";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -20,11 +22,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/AddService",
-                element: <AddService></AddService>,
+                element: (
+                    <PrivateRoute>
+                        <AddService></AddService>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/MyReviews",
-                element: <MyReviews></MyReviews>,
+                element: (
+                    <PrivateRoute>
+                        <MyReviews></MyReviews>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/allServices",
@@ -43,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/logIn",
                 element: <Login></Login>,
+            },
+            {
+                path: "/blog",
+                element: <Blog></Blog>,
             },
         ],
     },

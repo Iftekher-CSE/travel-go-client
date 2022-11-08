@@ -2,14 +2,21 @@ import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ThirdPartyAccount = () => {
     const { userGoogleLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+
     const handelGoogleSignIn = () => {
         userGoogleLogin()
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .then(err => console.error(err));
     };

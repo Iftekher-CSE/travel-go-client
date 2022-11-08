@@ -1,18 +1,57 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
+import logo from "../../../Assets/Travel-logo.png";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const NavBar = () => {
+    const { userLogOut, user } = useContext(AuthContext);
+    console.log(user);
+    const handelLogOut = () => {
+        userLogOut()
+            .then(() => {})
+            .catch(err => console.error(err));
+    };
+
     const navItem = (
         <>
-            <NavLink to="/home">Home</NavLink>
-            <NavLink to="/AddService">Add service</NavLink>
-            <NavLink to="/MyReviews">My reviews</NavLink>
+            <NavLink className="btn btn-outline mr-2" to="/home">
+                Home
+            </NavLink>
+
+            <NavLink className="btn btn-outline mr-2" to="/blogs">
+                Blog
+            </NavLink>
+            {user?.uid ? (
+                <>
+                    <NavLink className="btn btn-outline mr-2" to="/AddService">
+                        Add service
+                    </NavLink>
+                    <NavLink className="btn btn-outline mr-2" to="/MyReviews">
+                        My reviews
+                    </NavLink>
+                    <NavLink
+                        onClick={handelLogOut}
+                        className="btn btn-outline mr-2"
+                    >
+                        Log Out
+                    </NavLink>
+                </>
+            ) : (
+                <>
+                    <NavLink className="btn btn-outline mr-2" to="/logIn">
+                        Log In
+                    </NavLink>
+                    <NavLink className="btn btn-outline mr-2" to="/register">
+                        Register
+                    </NavLink>
+                </>
+            )}
         </>
     );
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 justify-between">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,13 +77,33 @@ const NavBar = () => {
                         {navItem}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to="/home">
+                    <img className="w-full md:w-36 px-2" src={logo} alt="" />
+                </Link>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal p-0">{navItem}</ul>
+                </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">{navItem}</ul>
-            </div>
-            <div className="navbar-end">
-                <a className="btn">Get started</a>
+
+            {/* logged in user info */}
+            <div>
+                {user?.uid ? (
+                    <>
+                        <div className="avatar pe-4">
+                            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={user?.photoURL} alt="" />
+                            </div>
+                        </div>
+                        <div className="pl-2">
+                            <h3 className="font-bold text-lg">
+                                {user?.displayName}
+                            </h3>
+                            <div className="text-s">{user?.email}</div>
+                        </div>
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     );

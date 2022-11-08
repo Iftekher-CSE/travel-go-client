@@ -19,9 +19,8 @@ const AddService = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     console.log("Inside If");
-                    alert("Service Added Successfully!");
-                    // toast.success("User Added Successfully!");
-                    // <Toaster />;
+                    // alert("Service Added Successfully!");
+                    toast.success("User Added Successfully!");
                 }
             });
 

@@ -5,7 +5,6 @@ import ServiceView from "../ServiceView/ServiceView";
 const Home = () => {
     return (
         <div>
-            <h4>This is Home</h4>
             <Banner></Banner>
             <ServiceView></ServiceView>
         </div>

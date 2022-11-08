@@ -5,9 +5,9 @@ const ReviewSection = () => {
         <div>
             <h3>Review Section</h3>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 border items-center rounded-md p-2">
                 <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
+                    <div className="mask mask-squircle w-14 h-14">
                         <img
                             src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/face-icon.png"
                             alt="Avatar Tailwind CSS Component"
@@ -20,11 +20,12 @@ const ReviewSection = () => {
                         <span className="text-xs">Review Time</span>
                         <input
                             type="text"
-                            placeholder="Type here"
-                            className="input input-bordered w-full"
+                            placeholder="your review here"
+                            className="input input-bordered w-full mt-1"
                         />
                     </div>
                 </div>
+                <input type="submit" value="Submit" className="btn" />
             </div>
         </div>
     );

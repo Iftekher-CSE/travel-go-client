@@ -27,7 +27,10 @@ const NavBar = () => {
                     <NavLink className="btn btn-outline mr-2" to="/AddService">
                         Add service
                     </NavLink>
-                    <NavLink className="btn btn-outline mr-2" to="/MyReviews">
+                    <NavLink
+                        className="btn btn-outline mr-2"
+                        to={`/MyReviews/${user.email}`}
+                    >
                         My reviews
                     </NavLink>
                     <NavLink
@@ -91,7 +94,14 @@ const NavBar = () => {
                     <>
                         <div className="avatar pe-4">
                             <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={user?.photoURL} alt="" />
+                                <img
+                                    src={
+                                        user?.photoURL
+                                            ? user?.photoURL
+                                            : "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/face-icon.png"
+                                    }
+                                    alt=""
+                                />
                             </div>
                         </div>
                         <div className="pl-2">

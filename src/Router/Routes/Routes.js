@@ -33,7 +33,7 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/MyReviews",
+                path: "/MyReviews/:email",
                 element: (
                     <PrivateRoute>
                         <MyReviews></MyReviews>

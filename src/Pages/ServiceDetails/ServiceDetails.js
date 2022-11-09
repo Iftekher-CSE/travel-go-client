@@ -11,7 +11,7 @@ const ServiceDetails = () => {
             <div className="w-1/2">
                 <CardDetails serviceDetails={serviceDetails}></CardDetails>
             </div>
-            <div className="w=1/2">
+            <div className="w-1/2">
                 <ReviewSection serviceDetails={serviceDetails}></ReviewSection>
             </div>
         </div>

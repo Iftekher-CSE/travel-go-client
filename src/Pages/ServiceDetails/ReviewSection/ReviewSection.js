@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import AllReview from "./AllReview/AllReview";
 
 const ReviewSection = ({ serviceDetails }) => {
+    const serviceId = serviceDetails._id;
     const { user } = useContext(AuthContext);
-    const { displayName, email, photoURL } = user;
+    const location = useLocation;
+    const handelLoginFromReview = () => (
+        <Navigate to="/login" state={{ from: location }}></Navigate>
+    );
     const onPostSubmit = event => {
+        const { displayName, email, photoURL } = user;
         event.preventDefault();
         const reviewTime = Date.now();
         const review = event.target.review.value;
-        const serviceId = serviceDetails._id;
         const postDetails = {
             review,
             displayName,
@@ -36,37 +42,62 @@ const ReviewSection = ({ serviceDetails }) => {
 
     return (
         <div>
-            <h3>Review Section</h3>
+            <h3 className="text-2xl font-bold text-center py-3">
+                Review Section for {serviceDetails.ServiceName}
+            </h3>
 
-            <form
-                onSubmit={onPostSubmit}
-                className="flex items-center space-x-3 border items-center rounded-md p-2"
-            >
-                <div className="avatar">
-                    <div className="mask mask-squircle w-14 h-14">
-                        <img
-                            src={
-                                user?.photoURL
-                                    ? user?.photoURL
-                                    : "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/face-icon.png"
-                            }
-                            alt="Avatar Tailwind CSS Component"
-                        />
+            {user?.uid ? (
+                <form
+                    onSubmit={onPostSubmit}
+                    className="flex items-center space-x-3 border items-center rounded-md p-2"
+                >
+                    <div className="avatar">
+                        <div className="mask mask-squircle w-14 h-14">
+                            <img
+                                src={
+                                    user?.photoURL
+                                        ? user?.photoURL
+                                        : "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/face-icon.png"
+                                }
+                                alt="Avatar Tailwind CSS Component"
+                            />
+                        </div>
                     </div>
-                </div>
-                <div>
                     <div>
-                        {user?.displayName} (<span>{user?.email}</span>)
-                        <input
-                            type="text"
-                            name="review"
-                            placeholder="your review here"
-                            className="input input-bordered w-full mt-1"
-                        />
+                        <div>
+                            {user?.displayName} (<span>{user?.email}</span>)
+                            <input
+                                type="text"
+                                name="review"
+                                placeholder="your review here"
+                                className="input input-bordered w-full mt-1"
+                            />
+                        </div>
                     </div>
-                </div>
-                <input type="submit" value="Post" className="btn" />
-            </form>
+                    <input type="submit" value="Post" className="btn" />
+                </form>
+            ) : (
+                <>
+                    <div className="bg-blue-200 h-20 w-full rounded-md p-4 flex items-center">
+                        <div className="mx-auto flex flex-row">
+                            <h2 className="text-2xl mr-4">
+                                Please Login to post a review.
+                            </h2>
+                            <Link to="/login" state={{ from: location }}>
+                                <button className="btn">Login</button>
+                            </Link>
+
+                            {
+                                // <Navigate
+                                //     to="/login"
+                                //     state={{ from: location }}
+                                // ></Navigate>
+                            }
+                        </div>
+                    </div>
+                </>
+            )}
+            <AllReview serviceId={serviceId}></AllReview>
         </div>
     );
 };

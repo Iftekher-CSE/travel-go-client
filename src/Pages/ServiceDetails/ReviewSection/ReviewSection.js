@@ -5,6 +5,7 @@ import AllReview from "./AllReview/AllReview";
 
 const ReviewSection = ({ serviceDetails }) => {
     const serviceId = serviceDetails._id;
+    const serviceName = serviceDetails.ServiceName;
     const { user } = useContext(AuthContext);
     const location = useLocation;
     const handelLoginFromReview = () => (
@@ -22,6 +23,7 @@ const ReviewSection = ({ serviceDetails }) => {
             photoURL,
             reviewTime,
             serviceId,
+            serviceName,
         };
         console.log(postDetails);
 

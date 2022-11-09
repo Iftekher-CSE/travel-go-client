@@ -31,7 +31,7 @@ const AllReview = ({ serviceId }) => {
                             <div>
                                 <h2 className="font-bold">
                                     {review?.displayName}{" "}
-                                    <spam>({review?.email})</spam>
+                                    <span>({review?.email})</span>
                                 </h2>
                             </div>
                             <div>

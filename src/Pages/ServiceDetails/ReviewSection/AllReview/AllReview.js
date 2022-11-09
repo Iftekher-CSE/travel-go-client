@@ -9,7 +9,7 @@ const AllReview = ({ serviceId }) => {
             .then(data => {
                 setReviews(data);
             });
-    }, []);
+    }, [reviews]);
     return (
         <div className="my-6 p-4">
             <h3 className="font-bold">All Previous Review of this service:</h3>

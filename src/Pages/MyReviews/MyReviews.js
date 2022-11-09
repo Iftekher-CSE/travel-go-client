@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { BiTrash, BiEdit } from "react-icons/bi";
 import toast from "react-hot-toast";
-import ReviewEditModal from "./ReviewEditModal/ReviewEditModal";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -13,7 +12,7 @@ const MyReviews = () => {
             .then(data => {
                 setUserReviews(data);
             });
-    }, [user]);
+    }, [user, userReviews]);
 
     // delete a review
     const handelDelete = id => {
@@ -38,8 +37,20 @@ const MyReviews = () => {
     };
 
     // handel edit
-    const handelUpdateReview = id => {
-        console.log(id);
+    const handelUpdateReview = event => {
+        event.preventDefault();
+        const review = event.target.review.value;
+        const id = event.target.id.value;
+        fetch(`http://localhost:5000/allReview/${id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ review }),
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+        // console.log(review, id);
     };
 
     // console.log(userReviews);
@@ -54,7 +65,8 @@ const MyReviews = () => {
                         <tr>
                             <th>Service Name</th>
                             <th>My Review</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +86,8 @@ const MyReviews = () => {
                                 </td>
                                 <td>
                                     {/* Edit Btn */}
-                                    {/* Modal luncher btn */}
+
+                                    {/* The button to open modal */}
                                     <label
                                         htmlFor={`my-modal-${index}`}
                                         className="btn mr-2 p-3"
@@ -82,20 +95,14 @@ const MyReviews = () => {
                                         <BiEdit className="w-6 h-6"></BiEdit>
                                     </label>
 
-                                    {/* modal body */}
+                                    {/* Modal BOdy*/}
                                     <input
                                         type="checkbox"
                                         id={`my-modal-${index}`}
                                         className="modal-toggle"
                                     />
-                                    <label
-                                        htmlFor="my-modal-4"
-                                        className="modal cursor-pointer"
-                                    >
-                                        <label
-                                            className="modal-box relative h-2/4"
-                                            htmlFor=""
-                                        >
+                                    <div className="modal">
+                                        <div className="modal-box relative max-w-3xl">
                                             <label
                                                 htmlFor={`my-modal-${index}`}
                                                 className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -103,31 +110,36 @@ const MyReviews = () => {
                                                 ✕
                                             </label>
                                             <h3 className="text-lg font-bold">
-                                                {`Service Name: ${review?.serviceName}`}
+                                                Edit Review For:
+                                                {review?.serviceName}
                                             </h3>
-                                            <label className="label">
-                                                <span className="text-lg mt-6">
-                                                    Review:
-                                                </span>
-                                            </label>
-                                            <textarea
-                                                defaultValue={review?.review}
-                                                className="textarea textarea-bordered block w-full"
-                                                placeholder="review"
-                                            ></textarea>{" "}
-                                            <button
-                                                onClick={() =>
-                                                    handelUpdateReview(
-                                                        review._id
-                                                    )
-                                                }
-                                                className="btn mt-6"
-                                            >
-                                                Update Review
-                                            </button>
-                                        </label>
-                                    </label>
-
+                                            <form onSubmit={handelUpdateReview}>
+                                                <label>ID</label>
+                                                <input
+                                                    readOnly
+                                                    type="text"
+                                                    name="id"
+                                                    defaultValue={review._id}
+                                                    className="mb-2 block input input-bordered w-full mt-1"
+                                                />
+                                                <label>Previous Review</label>
+                                                <input
+                                                    type="text"
+                                                    name="review"
+                                                    defaultValue={review.review}
+                                                    placeholder="your review here"
+                                                    className="block input input-bordered w-full mt-1"
+                                                />
+                                                <input
+                                                    type="submit"
+                                                    value="Update Review"
+                                                    className="btn my-2"
+                                                />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
                                     {/* Delete Btn */}
                                     <button
                                         onClick={() => handelDelete(review._id)}

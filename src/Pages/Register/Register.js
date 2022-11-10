@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { setJwtToken } from "../../API/JotAPI";
 import loginImage from "../../Assets/LoginPage.jpg";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import ThirdPartyAccount from "../../Shared/ThirdPartyAccount/ThirdPartyAccount";
@@ -18,6 +19,7 @@ const Register = () => {
         userRegistration(email, password)
             .then(result => {
                 const user = result.user;
+                setJwtToken(user);
                 console.log(user);
             })
             .then(err => console.error(err));

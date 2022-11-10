@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setJwtToken } from "../../API/JotAPI";
 import loginImage from "../../Assets/LoginPage.jpg";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import ThirdPartyAccount from "../../Shared/ThirdPartyAccount/ThirdPartyAccount";
@@ -21,6 +22,7 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                setJwtToken(user);
                 navigate(from, { replace: true });
             })
             .catch(err => console.error(err));

@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { setJwtToken } from "../../API/JotAPI";
 
 const ThirdPartyAccount = () => {
     const { userGoogleLogin } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const ThirdPartyAccount = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                setJwtToken(user);
                 navigate(from, { replace: true });
             })
             .then(err => console.error(err));

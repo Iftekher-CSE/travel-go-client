@@ -17,6 +17,9 @@ const AllServices = () => {
             <h2 className="text-center text-3xl font-bold py-2 my-4 bg-blue-400 rounded-xl text-white">
                 All Our Current Services
             </h2>
+            <div className={services.length > 0 ? "hidden" : "block"}>
+                <button className="btn btn-ghost loading">loading . . .</button>
+            </div>
             {services.map(service => (
                 <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}

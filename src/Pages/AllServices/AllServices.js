@@ -1,3 +1,5 @@
+import { PhotoProvider, PhotoView } from "react-photo-view";
+
 import React, { useEffect, useState } from "react";
 import ServiceCard from "../Home/ServiceCard/ServiceCard";
 

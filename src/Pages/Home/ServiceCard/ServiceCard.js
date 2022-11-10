@@ -29,7 +29,9 @@ const ServiceCard = ({ service }) => {
                             Service Type: {ServiceType}
                         </h1>
                         <p className="pt-6 pb-4 text-justify	">
-                            {ServiceDetails}
+                            {ServiceDetails.length > 100
+                                ? `${ServiceDetails.slice(0, 99)} . . .`
+                                : ServiceDetails}
                         </p>
                         <p className="pb-6 text-xl">
                             Approximate cost will be BDT:{" "}
@@ -37,7 +39,7 @@ const ServiceCard = ({ service }) => {
                         </p>
                         <Link to={`/serviceDetails/${_id}`}>
                             <button className="btn btn-primary">
-                                Service Review
+                                View Details
                             </button>
                         </Link>
                     </div>

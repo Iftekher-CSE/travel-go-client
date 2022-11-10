@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
     return (
-        <div>
+        <div className="my-10">
             <Helmet>
                 <title>Blog-Travel Go</title>
             </Helmet>
@@ -16,22 +16,31 @@ const Blog = () => {
                 className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mx-8"
             >
                 <div className="collapse-title text-xl font-medium">
-                    What is <code>cors</code> ?
+                    Difference between SQL and NoSQL
                 </div>
                 <div className="collapse-content">
                     <p>
-                        Cross-origin resource sharing (CORS) is a HTTP-header
-                        based browser security mechanism which enables
-                        controlled access to resources located outside of a
-                        given domain. It allows a service (API) to indicate any
-                        origin other than its own from which the client can
-                        request resources. CORS also relies on a mechanism by
-                        which browsers make a "preflight" request to the server
-                        hosting the cross-origin resource, in order to check
-                        that the server will permit the actual request. It
-                        enables JavaScripts running in browsers to connect to
-                        APIs and other web resources like fonts, and stylesheets
-                        from multiple different providers.
+                        1. SQL databases are primarily called as Relational
+                        Databases (RDBMS); whereas NoSQL database are primarily
+                        called as non-relational or distributed database. <br />
+                        2. SQL databases use structured query language and have
+                        a predefined schema. SQL requires you to use predefined
+                        schemas to determine the structure of your data before
+                        you work with it. NoSQL databases have dynamic schemas
+                        for unstructured data. Means data is stored here in many
+                        ways which means it can be document-oriented,
+                        column-oriented, graph-based or organized as a KeyValue
+                        store. <br />
+                        3. SQL databases are vertically scalable, while NoSQL
+                        databases are horizontally scalable. <br />
+                        SQL databases are table-based, while NoSQL databases are
+                        document, key-value, graph, or wide-column stores.{" "}
+                        <br />
+                        4. SQL databases are better for multi-row transactions,
+                        while NoSQL is better for unstructured data like
+                        documents or JSON. <br />5 SQL databases are better for
+                        multi-row transactions, while NoSQL is better for
+                        unstructured data like documents or JSON.
                     </p>
                 </div>
             </div>
@@ -41,21 +50,28 @@ const Blog = () => {
                 className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mx-8"
             >
                 <div className="collapse-title text-xl font-medium">
-                    Why are you using <code>firebase</code> ? What other options
-                    do you have to implement authentication?
+                    What is JWT, and how does it work?
                 </div>
                 <div className="collapse-content">
                     <p>
-                        Firebase is an app development platform that helps one
-                        to build and grow web apps, mobile apps and
-                        games.Firebase is a platform that offers active backend
-                        as a service (BaaS) for building dynamic web and mobile
-                        apps. <br></br>
-                        We can use firebase for different Authentication, Remote
-                        Config, Analytics, Database and Cloud Messaging. <br />
-                        Some authentication service providers are STYTCH, Ory,
-                        Supabase, Okta, PingIdentity, Keycloak, Frontegg,
-                        Authress, Auth0, Amazon Cognito and OneLogin.
+                        JWT Means JSON Web Token, is an open standard used to
+                        share security information between two parties — a
+                        client and a server. Each JWT contains encoded JSON
+                        objects, including a set of claims. JWTs are signed
+                        using a cryptographic algorithm to ensure that the
+                        claims cannot be altered after the token is issued.{" "}
+                        <br />
+                        First of all server generate a TWT with a secret
+                        signature. When a user sign-in using username and
+                        password or google/facebook. Server verifies the
+                        credentials and issues a signed jwt for the user, that
+                        token is stored in local storage or browser cookies.
+                        After that, when user request for any restricted data
+                        from server it sent JWT also with the request. Server
+                        collect the request and provided JWT. Then server match
+                        verify the JWT with redefined rules. Finally if the JTW
+                        get verified server provide the requested data,
+                        otherwise provide any error.
                     </p>
                 </div>
             </div>
@@ -65,23 +81,22 @@ const Blog = () => {
                 className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mx-8"
             >
                 <div className="collapse-title text-xl font-medium">
-                    How does the private route work?
+                    What is the difference between javascript and NodeJS?
                 </div>
                 <div className="collapse-content">
                     <p>
-                        Private route is also called Protected route is just
-                        similar as public route, the only change is that
-                        redirect URL and authenticate condition.If the user is
-                        not authenticated he will be redirected to the login
-                        page and the user can only access the authenticated
-                        routes If he is authenticated (Logged in). <br />
-                        Private route is used as wrapping of other route we want
-                        to provide authentication. User is directed to private
-                        route before getting access to targeted route, private
-                        route check user access permission based on pre given
-                        condition. Based on that condition private route allow
-                        user to enter into the targeted route or redirect to
-                        login or other page.
+                        1. JavaScript is a client-side scripting language that
+                        generally run in browser. NodeJS is v-8 based
+                        cross-platform and open source Javascript runtime
+                        environment that allows the javascript to be run on the
+                        server-side. <br />
+                        2. Javascript Manly used in client-side. NodeJS is
+                        mostly used on the server-side. <br />
+                        3. Javascript itself can only be run in the browsers.
+                        Javascript can run outside the browser with the help of
+                        NodeJS. <br />
+                        4. Some of the javascript library are reactJS, ViewJS
+                        etc.Some of the Nodejs modules are Lodash, express etc.
                     </p>
                 </div>
             </div>
@@ -90,36 +105,25 @@ const Blog = () => {
                 className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mx-8"
             >
                 <div className="collapse-title text-xl font-medium">
-                    What is Node? How does Node work?
+                    How does NodeJS handle multiple requests at the same time?
                 </div>
                 <div className="collapse-content">
                     <p>
-                        Node and NodeJS are the same thing, node is just a
-                        shorter way to say Node JS. Node JS is an open-source,
-                        cross-platform and asynchronous event-driven JavaScript
-                        runtime. It is used for running web applications outside
-                        the client’s browser. Node.js is designed to build
-                        scalable network applications. <br />
-                        Node.js is open source means that it is free to use and
-                        constantly being tweaked and improved by a global
-                        community of developers. Node.js is actually neither a
-                        framework or a library, but a runtime environment. A
-                        runtime environment contains Web API’s that a developer
-                        can access to build a code, and a JavaScript engine that
-                        parses that code. This makes it lightweight, flexible
-                        and easy to deploy, all features that will help to
-                        optimize and speed up your application project. <br />
-                        <b>Working of Node.js:</b> Node.js is the JavaScript
-                        runtime environment which is based on Google’s V8
-                        Engine. Node.js accepts the request from the clients and
-                        sends the response, while working with the request
-                        node.js handles them with a single thread. To operate
-                        I/O (input-output) operations or requests node.js use
-                        the concept of threads. Thread is a sequence of
-                        instructions that the server needs to perform. It runs
-                        parallel on the server to provide the information to
-                        multiple clients. It can handle concurrent requests with
-                        a single thread without blocking it for one request.
+                        NodeJS receives multiple client requests and places them
+                        into EventQueue. NodeJS has its own EventLoop which is
+                        an infinite loop that receives requests and processes
+                        them. EventLoop is the listener for the EventQueue. This
+                        is called Asynchronous and Non-blocking behavior.in this
+                        way Node accept the first client’s request, send the
+                        request to a pool of working threads, and become free to
+                        accept the second client’s request (non-blocking
+                        behavior). This way it can handle multiple or concurrent
+                        client requests at the same time. As soon as the
+                        response is ready, the pool of threads sends it back to
+                        the main thread via callbacks (asynchronous behavior).
+                        As soon as the thread receives the response, it returns
+                        the response to the respective client. This is how Node
+                        JS multiple requests at the same time.
                     </p>
                 </div>
             </div>

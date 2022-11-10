@@ -3,7 +3,7 @@ import { FcCalendar, FcCustomerSupport, FcShop } from "react-icons/fc";
 
 const KeyInfos = () => {
     return (
-        <div className="py-10 bg-blue-600 my-20 rounded-xl text-white flex justify-around">
+        <div className="py-10 bg-blue-600 my-20 rounded-xl text-white flex justify-around  flex-wrap">
             <div className="hero-content text-center shadow-2xl">
                 <FcCalendar className="h-10 w-10"></FcCalendar>
                 <div className="max-w-md">

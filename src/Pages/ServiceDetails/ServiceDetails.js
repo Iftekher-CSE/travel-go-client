@@ -8,10 +8,10 @@ const ServiceDetails = () => {
     console.log(serviceDetails);
     return (
         <div className="flex flex-col lg:flex-row gap-1">
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
                 <CardDetails serviceDetails={serviceDetails}></CardDetails>
             </div>
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
                 <ReviewSection serviceDetails={serviceDetails}></ReviewSection>
             </div>
         </div>

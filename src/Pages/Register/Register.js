@@ -7,25 +7,36 @@ import ThirdPartyAccount from "../../Shared/ThirdPartyAccount/ThirdPartyAccount"
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
-    const { userRegistration } = useContext(AuthContext);
+    const { userRegistration, userProfileUpdate } = useContext(AuthContext);
 
     const handelRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-        const photoUrl = form.photoUrl.value;
+        const photoURL = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
         form.reset();
+
+        // user registration and update profile
         userRegistration(email, password)
             .then(result => {
                 const user = result.user;
                 setJwtToken(user);
                 console.log(user);
+
+                // update user profile
+                const profile = {
+                    displayName: name,
+                    photoURL: photoURL,
+                };
+                userProfileUpdate(profile)
+                    .then(() => {})
+                    .catch(error => console.error(error));
             })
             .then(err => console.error(err));
 
-        console.log(name, photoUrl, email, password);
+        console.log(name, photoURL, email, password);
     };
 
     return (

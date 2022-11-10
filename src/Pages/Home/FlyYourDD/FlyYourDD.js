@@ -5,7 +5,7 @@ import { FaPlaneDeparture } from "react-icons/fa";
 const FlyYourDD = () => {
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl my-20 rounded-xl">
-            <figure className="w-2/5">
+            <figure className="w-full lg:w-2/5">
                 <img src={flyImage} alt="Album" />
             </figure>
             <div className="card-body bg-gradient-to-r from-sky-800 to-indigo-500 text-white rounded-r-xl">

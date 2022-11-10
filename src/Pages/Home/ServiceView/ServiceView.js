@@ -5,7 +5,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 const ServiceView = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/allServices?count=${3}`)
+        fetch(`https://travel-go-server.vercel.app/allServices?count=${3}`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);

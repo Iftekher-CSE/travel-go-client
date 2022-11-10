@@ -7,7 +7,7 @@ const AddService = () => {
         event.preventDefault();
         console.log(service);
 
-        fetch("http://localhost:5000/addService", {
+        fetch("https://travel-go-server.vercel.app/addService", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

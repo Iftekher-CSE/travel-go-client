@@ -7,13 +7,16 @@ const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [userReviews, setUserReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/allReview?email=${user.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem(
-                    "travel-go-token"
-                )}`,
-            },
-        })
+        fetch(
+            `https://travel-go-server.vercel.app/allReview?email=${user.email}`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        "travel-go-token"
+                    )}`,
+                },
+            }
+        )
             .then(res => res.json())
             .then(data => {
                 setUserReviews(data);
@@ -26,7 +29,7 @@ const MyReviews = () => {
             "Are you sure want to delete this review?"
         );
         if (confirmDelete) {
-            fetch(`http://localhost:5000/allReview/${id}`, {
+            fetch(`https://travel-go-server.vercel.app/allReview/${id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())
@@ -47,7 +50,7 @@ const MyReviews = () => {
         event.preventDefault();
         const review = event.target.review.value;
         const id = event.target.id.value;
-        fetch(`http://localhost:5000/allReview/${id}`, {
+        fetch(`https://travel-go-server.vercel.app/allReview/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",
@@ -62,7 +65,11 @@ const MyReviews = () => {
     // console.log(userReviews);
     return (
         <div className="my-6 p-4">
-            <h3 className="font-bold text-2xl text-center my-4">My Reviews:</h3>
+            <h3 className="font-bold text-2xl text-center my-4">
+                {userReviews.length > 0
+                    ? "My Reviews:"
+                    : "No reviews were added"}
+            </h3>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

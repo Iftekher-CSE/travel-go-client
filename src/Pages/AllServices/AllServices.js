@@ -1,12 +1,10 @@
-import { PhotoProvider, PhotoView } from "react-photo-view";
-
 import React, { useEffect, useState } from "react";
 import ServiceCard from "../Home/ServiceCard/ServiceCard";
 
 const AllServices = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/allServices?count=${0}`)
+        fetch(`https://travel-go-server.vercel.app/allServices?count=${0}`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);

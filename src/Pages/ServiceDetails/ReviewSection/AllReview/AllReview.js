@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 const AllReview = ({ serviceId }) => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/serviceReview?serviceId=${serviceId}`)
+        fetch(
+            `https://travel-go-server.vercel.app/serviceReview?serviceId=${serviceId}`
+        )
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

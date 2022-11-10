@@ -3,7 +3,7 @@ export const setJwtToken = user => {
         email: user.email,
     };
 
-    fetch("http://localhost:5000/jwt", {
+    fetch("https://travel-go-server.vercel.app/jwt", {
         method: "POST",
         headers: {
             "content-type": "application/json",

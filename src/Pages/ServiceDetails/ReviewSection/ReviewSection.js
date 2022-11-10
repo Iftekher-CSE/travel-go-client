@@ -27,7 +27,7 @@ const ReviewSection = ({ serviceDetails }) => {
         };
         console.log(postDetails);
 
-        fetch("http://localhost:5000/postReview", {
+        fetch("https://travel-go-server.vercel.app/postReview", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -4,6 +4,7 @@ import { setJwtToken } from "../../API/JotAPI";
 import loginImage from "../../Assets/LoginPage.jpg";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import ThirdPartyAccount from "../../Shared/ThirdPartyAccount/ThirdPartyAccount";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
@@ -91,6 +92,9 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+            <Helmet>
+                <title>Login-Travel Go</title>
+            </Helmet>
         </div>
     );
 };

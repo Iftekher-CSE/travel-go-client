@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { BiTrash, BiEdit } from "react-icons/bi";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -166,6 +167,9 @@ const MyReviews = () => {
                     </tbody>
                 </table>
             </div>
+            <Helmet>
+                <title>My Reviews-Travel Go</title>
+            </Helmet>
         </div>
     );
 };

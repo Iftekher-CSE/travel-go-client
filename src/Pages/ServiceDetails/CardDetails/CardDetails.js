@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const CardDetails = ({ serviceDetails }) => {
     const {
@@ -30,6 +31,9 @@ const CardDetails = ({ serviceDetails }) => {
                     </p>
                 </div>
             </div>
+            <Helmet>
+                <title>{ServiceName}-Travel Go</title>
+            </Helmet>
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import CardDetails from "./CardDetails/CardDetails";
 import ReviewSection from "./ReviewSection/ReviewSection";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData();

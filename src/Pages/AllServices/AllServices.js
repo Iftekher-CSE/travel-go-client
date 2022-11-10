@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ServiceCard from "../Home/ServiceCard/ServiceCard";
+import { Helmet } from "react-helmet-async";
 
 const AllServices = () => {
     const [services, setServices] = useState([]);
@@ -17,6 +18,9 @@ const AllServices = () => {
             {services.map(service => (
                 <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}
+            <Helmet>
+                <title>All services-Travel Go</title>
+            </Helmet>
         </div>
     );
 };

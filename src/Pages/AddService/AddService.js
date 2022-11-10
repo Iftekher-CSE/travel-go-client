@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
     const [service, setService] = useState({});
@@ -119,6 +120,9 @@ const AddService = () => {
                     </div>
                 </div>
             </form>
+            <Helmet>
+                <title>Add Service-Travel Go</title>
+            </Helmet>
         </div>
     );
 };

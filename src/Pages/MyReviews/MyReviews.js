@@ -7,7 +7,13 @@ const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [userReviews, setUserReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/allReview?email=${user.email}`)
+        fetch(`http://localhost:5000/allReview?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem(
+                    "travel-go-token"
+                )}`,
+            },
+        })
             .then(res => res.json())
             .then(data => {
                 setUserReviews(data);

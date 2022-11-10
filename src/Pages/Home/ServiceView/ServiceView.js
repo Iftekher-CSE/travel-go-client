@@ -13,7 +13,9 @@ const ServiceView = () => {
     }, []);
     return (
         <div>
-            <h2>Summary Service View</h2>
+            <h2 className="text-center text-3xl font-bold py-2 my-4 bg-blue-400 rounded-xl text-white">
+                Summary Service View
+            </h2>
             {services.map(service => (
                 <ServiceCard key={service._id} service={service}></ServiceCard>
             ))}

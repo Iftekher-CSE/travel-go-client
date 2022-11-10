@@ -13,7 +13,7 @@ const ServiceCard = ({ service }) => {
         ServiceCost,
     } = service;
     return (
-        <div className="hero bg-base-200 mb-10">
+        <div className="hero bg-base-200 mb-10 rounded-xl shadow-xl">
             <PhotoProvider>
                 <div className="hero-content flex-col lg:flex-row">
                     <PhotoView src={imageURL}>
